@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, width=device-width" /><!-- Do not change this! -->
+		<!-- Stylesheets -->
+		<!-- jQuery and jQuery Mobile -->
+		<link rel="stylesheet" type="text/css" href="./themes/AndroidHolo.min.css" /><!-- ThemeRoller theme -->
+		<link rel="stylesheet" type="text/css" href="./themes/jquery.mobile.icons-1.4.2.min.css" />
+		<link rel="stylesheet" type="text/css" href="./themes/jquery.mobile.structure-1.4.2.min.css" />
+		
+		<!-- jpHolo theme -->
+		<link rel="stylesheet" type="text/css" href="./themes/jpholo.css" />
+		<link rel="stylesheet" type="text/css" href="./themes/jpholo.smartphone.css" id="sizeStylesheet" />
+		
+		<!-- JavaScript -->
+		<!-- Cordova PhoneGap --><!-- exclude the scripts below if you are not deploying with PhoneGap -->
+		<script type="text/javascript" src="./cordova.js"></script>
+		<script type="text/javascript" src="./backgroundService-3.1.0.js"></script>
+		<script type="text/javascript" src="./cordova_custom_plugins.js"></script>
+		
+		<!-- jQuery -->
+		<script type="text/javascript" src="./js/jquery-2.1.0.min.js"></script>
+		
+		<!-- jQuery Mobile -->
+		<script type="text/javascript" src="./js/jquery.mobile.settings.js"></script><!-- this must be loaded before jQuery Mobile -->
+		<script type="text/javascript" src="./js/jquery.mobile-1.4.2.min.js"></script>
+		
+		<!-- Other frameworks -->
+		<script type="text/javascript" src="./js/fastclick.js"></script><!-- for speeding op tap events, load this AFTER jQuery Mobile -->
+		<script type="text/javascript" src="./js/i18next-1.7.2.min.js"></script><!-- for multi language -->
+		
+		<!-- Application -->
+		<!-- Set document, used in jpholo.core.js -->
+		<script type="text/javascript">
+			window.indexFile = "index.html";
+			window.phonegapExcluded = false; // set this value to either true or false, depending on if you load the Cordova PhoneGap scripts.
+		</script>
+		<!-- jpHolo core -->
+		<script type="text/javascript" src="./js/jpholo.core.js"></script>
+		<script type="text/javascript" src="./js/jpholo.core.services.js"></script>
+		<!-- your scripts -->
+		<script>
+		$(document).ready(function() {
+		
+		$.ajax({
+				//url: "/wmcrewards/apps/index.php?lang=en&apps=1",
+				url: "http://wmcvip.vn/apps/index.php?lang=en&apps=1",
+				type: "POST",
+				success: function (res) {
+					//alert(res);
+					obj = jQuery.parseJSON(res);
+					//alert(obj[0].gallery);
+					for(var i=0;i< obj.length; i++){
+						//console.log(obj[i].gallery);
+						$(".contentPromotion").append('<img src="http://wmcvip.vn/apps/'+obj[i].gallery+'" /><br/>');
+					}
+				}		
+			});
+		});
+		
+		</script>
+		<title>WMC GROUP</title>
+	</head>
+	<body style="padding:0px; margin:0px;">
+		<div id="indexPage" data-role="page" data-theme="a">
+		<!-- id to tie the page event to this specific page -->
+			
+			<!-- left panel  -->
+			<div id="panelMenuIndex" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuIndexUL" data-role="listview"></ul>
+			</div>
+			<!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<!-- right panel  -->
+			<div id="panelMenuRightIndex" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuRightIndexUL" data-role="listview"></ul>
+			</div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+				<div>
+					<p class="headerBarText">
+					<img id="headerTitleIndex" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" />
+					
+					<img id="headerShareIndex" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" />
+					<img id="headerOverflowIndex" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+					&nbsp;</p>
+				</div><!-- populate the panel menu, also with the id Index in this case -->
+			</div><!-- /header -->
+			
+			<div id="contentIndex" style="text-align: center;padding:0px; margin:0px;border:0px;top:0px;" role="main" class="ui-content" data-theme="a">
+				
+				<!--<iframe id="frmIndex" style="border:0px;width:100%;min-height: 1500px;margin:0px;"  src="http://wmcvip.vn/apps" name="iframe_a"></iframe>-->
+				<div class="contentPromotion">
+				
+				</div>
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="b" class="actionbarTransparant">
+				<div>
+					<!--<img id="footerShareIndex" src="./images/icons/ic_action_share_header.png" class="footerIconLeft">-->
+					<img id="footerToastIndex" src="./images/icons/ic_action_list_header.png" class="footerIconRight">
+				</div>
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+		
+		
+		<div id="about" data-role="page" data-theme="a">
+		<!-- id to tie the page event to this specific page -->
+			
+			<!-- left panel  -->
+			<div id="panelMenuAbout" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuAboutUL" data-role="listview"></ul>
+			</div>
+			<!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<!-- right panel  -->
+			<div id="panelMenuRightAbout" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuRightAboutUL" data-role="listview"></ul>
+			</div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+				<div>
+					<p class="headerBarText">
+					<img id="headerTitleAbout" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" />
+					
+					<img id="headerShareAbout" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" />
+					<img id="headerOverflowAbout" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+					&nbsp;</p>
+				</div><!-- populate the panel menu, also with the id Index in this case -->
+			</div><!-- /header -->
+			
+			<div style="padding:0px; margin:0px;border:0px;top:0px;" role="main" class="ui-content" data-theme="a">
+				
+				<iframe style="border:0px;width:100%;min-height: 1500px;margin:0px;"  src="http://wmcvip.vn/apps/index.php?option=com_content&view=article&id=87&Itemid=104" name="iframe_a"></iframe>
+				
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="b" class="actionbarTransparant">
+				<div>
+					<!--<img id="footerShareAbout" src="./images/icons/ic_action_share_header.png" class="footerIconLeft">-->
+					<img id="footerToastAbout" src="./images/icons/ic_action_list_header.png" class="footerIconRight">
+				</div>
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+		
+		<div id="benefits" data-role="page" data-theme="a">
+		<!-- id to tie the page event to this specific page -->
+			
+			<!-- left panel  -->
+			<div id="panelMenuBenefits" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuBenefitsUL" data-role="listview"></ul>
+			</div>
+			<!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<!-- right panel  -->
+			<div id="panelMenuRightBenefits" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuRightBenefitsUL" data-role="listview"></ul>
+			</div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+				<div>
+					<p class="headerBarText">
+					<img id="headerTitleBenefits" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" />
+					
+					<img id="headerShareBenefits" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" />
+					<img id="headerOverflowBenefits" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+					&nbsp;</p>
+				</div><!-- populate the panel menu, also with the id Index in this case -->
+			</div><!-- /header -->
+			
+			<div style="padding:0px; margin:0px;border:0px;top:0px;" role="main" class="ui-content" data-theme="a">
+				
+				<iframe style="border:0px;width:100%;min-height: 1500px;margin:0px;"  src="http://wmcvip.vn/apps/index.php?option=com_content&view=article&id=91&Itemid=105" name="iframe_a"></iframe>
+				
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="b" class="actionbarTransparant">
+				<div>
+					<!--<img id="footerShareBenefits" src="./images/icons/ic_action_share_header.png" class="footerIconLeft">-->
+					<img id="footerToastBenefits" src="./images/icons/ic_action_list_header.png" class="footerIconRight">
+				</div>
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+		
+		<div id="rewards" data-role="page" data-theme="a">
+		
+			<!-- left panel  -->
+			<div id="panelMenuRewards" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuRewardsUL" data-role="listview"></ul>
+			</div>
+			<!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<!-- right panel  -->
+			<div id="panelMenuRightRewards" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuRightRewardsUL" data-role="listview"></ul>
+			</div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+				<div>
+					<p class="headerBarText">
+					<img id="headerTitleRewards" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" />
+					
+					<img id="headerShareRewards" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" />
+					<img id="headerOverflowRewards" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+					&nbsp;</p>
+				</div><!-- populate the panel menu, also with the id Index in this case -->
+			</div><!-- /header -->
+			
+			<div style="padding:0px; margin:0px;border:0px;top:0px;" role="main" class="ui-content" data-theme="a">
+				
+				<iframe style="border:0px;width:100%;min-height: 1500px;margin:0px;"  src="http://wmcvip.vn/apps/index.php?option=com_promotions&view=redemptions" name="iframe_a"></iframe>
+				
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="b" class="actionbarTransparant">
+				<div>
+					<!--<img id="footerShareRewards" src="./images/icons/ic_action_share_header.png" class="footerIconLeft">-->
+					<img id="footerToastRewards" src="./images/icons/ic_action_list_header.png" class="footerIconRight">
+				</div>
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+		
+		<div id="contact" data-role="page" data-theme="a">
+			
+			<!-- left panel  -->
+			<div id="panelMenuContact" data-role="panel" data-theme="b" data-position="left" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuContactUL" data-role="listview"></ul>
+			</div>
+			<!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<!-- right panel  -->
+			<div id="panelMenuRightContact" data-role="panel" data-theme="b" data-position="right" data-display="overlay" data-dismissible="true" data-position-fixed="true" data-swipe-close="true" data-animate="true" class="transparant">
+				<ul id="panelMenuRightContactUL" data-role="listview"></ul>
+			</div><!-- here you see why in the javascript there is a page event: initPageVarsOnShow('Index'); and: initPageVarsOnCreate('Index'); -->
+			<!-- /panel -->
+			
+			<div class="headerSticky ui-title" data-role="header" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="a">
+				<div>
+					<p class="headerBarText">
+					<img id="headerTitleContact" class="headerIconTitle" src="./images/icons/ic_launcher_full_menu.png" />
+					
+					<img id="headerShareContact" class="headerIconSecondRight" src="./images/icons/ic_action_share_header.png" />
+					<img id="headerOverflowContact" class="headerIconFirstRight" src="./images/icons/ic_action_overflow_header.png" />
+					&nbsp;</p>
+				</div><!-- populate the panel menu, also with the id Index in this case -->
+			</div><!-- /header -->
+			
+			<div style="padding:0px; margin:0px;border:0px;top:0px;" role="main" class="ui-content" data-theme="a">
+				
+				<iframe style="border:0px;width:100%;min-height: 1500px;margin:0px;"  src="http://wmcvip.vn/apps/index.php?option=com_content&view=article&id=26&Itemid=151" name="iframe_a"></iframe>
+				
+			</div><!-- /content -->
+			
+			<div data-role="footer" data-hide-during-focus="" data-tap-toggle="false" data-position="fixed" data-theme="b" class="actionbarTransparant">
+				<div>
+					<!--<img id="footerShareContact" src="./images/icons/ic_action_share_header.png" class="footerIconLeft">-->
+					<img id="footerToastContact" src="./images/icons/ic_action_list_header.png" class="footerIconRight">
+				</div>
+			</div><!-- /footer -->
+		
+		</div><!-- /page -->
+		
+	</body>
+</html>
